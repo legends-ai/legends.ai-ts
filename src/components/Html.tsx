@@ -26,6 +26,8 @@ const Html = ({ title, description, style, script, children }: HtmlProps) => {
       </head>
       <body>
         <div id="app" dangerouslySetInnerHTML={{ __html: children }} />
+        <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+        <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
         <script src="https://d3js.org/d3.v3.min.js" />
         {script && <script id="source" src={script} />}
       </body>

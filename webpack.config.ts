@@ -155,7 +155,8 @@ export default ({ DEBUG = false, VERBOSE = false }: CommandLine = {}) => {
       ],
       extensions: ['.webpack.js', '.js', '.jsx', '.json', '.ts', '.tsx'],
       alias: {
-        'src': ROOT,
+        '~src': ROOT,
+        '~components': ROOT + "/components",
       }
     },
 
@@ -176,11 +177,11 @@ export default ({ DEBUG = false, VERBOSE = false }: CommandLine = {}) => {
     plugins: [
       new webpack.LoaderOptionsPlugin({ debug: DEBUG })
     ],
- /*   
+
     externals: {
       "react": "React",
       "react-dom": "ReactDOM",
-    },*/
+    }
   }
 
   const clientConfig = _.merge({}, commonConfig, {
@@ -233,6 +234,42 @@ export default ({ DEBUG = false, VERBOSE = false }: CommandLine = {}) => {
     // http://webpack.github.io/docs/configuration.html#devtool
     devtool: DEBUG ? 'source-map' : false,
   })
+
+  const serverConfig = _.merge(true, {}, commonConfig, {
+    entry: './server.tsx',
+
+    output: {
+      path: path.resolve(__dirname, 'build'),
+      filename: 'server.js',
+      chunkFilename: 'server.[name].js',
+      libraryTarget: 'commonjs2',
+    },
+
+    target: 'node',
+
+    externals: [
+      /^\.\/assets$/,
+      /^[@a-z][a-z\/\.\-0-9]*$/i,
+    ],
+
+    plugins: [
+
+      // Define free variables
+      // https://webpack.github.io/docs/list-of-plugins.html#defineplugin
+      new webpack.DefinePlugin({ ...GLOBALS, 'process.env.BROWSER': false }),
+    ],
+
+    node: {
+      console: false,
+      global: false,
+      process: false,
+      Buffer: false,
+      __filename: false,
+      __dirname: false,
+    },
+
+    devtool: 'source-map',
+  });
   
-  return clientConfig
+  return [clientConfig, serverConfig]
 }

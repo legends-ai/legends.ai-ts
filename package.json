@@ -2,13 +2,21 @@
   "name": "legends.ai",
   "private": true,
   "scripts": {
-    "build": "webpack"
+    "devbuild": "rm -rf build && webpack --env.DEBUG"
   },
   "dependencies": {
+    "koa": "^2.3.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-router": "^7.2.1",
+    "koa-static": "^4.0.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   },
   "devDependencies": {
+    "@types/koa": "^2.0.39",
+    "@types/koa-bodyparser": "^3.0.23",
+    "@types/koa-router": "^7.0.22",
+    "@types/koa-static": "^3.0.0",
     "@types/lodash": "^4.14.71",
     "@types/react": "^15.6.0",
     "@types/react-dom": "^15.5.1",
