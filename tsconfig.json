@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "outDir": "build",
     "sourceMap": true,
     "strict": true,
     "experimentalDecorators": true,
@@ -9,6 +8,10 @@
     "target": "es2017",
     "jsx": "react",
     "baseUrl": "./",
+    "rootDirs": [
+      "src",
+      "types"
+    ],
     "paths": {
       "~src/*": ["./src/*"],
       "~components/*": ["./src/components/*"]
