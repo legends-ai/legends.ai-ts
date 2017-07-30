@@ -40,11 +40,11 @@ app
     const route = await universalRouter.resolve({ path: ctx.path, query: ctx.query })
     const data = {
       ...route,
-      style: [...css].join(''),
       script: assets.js,
       children: ReactDOM.renderToString(
         <App context={context}>{route.component}</App>
       ),
+      style: [...css].join(''),
     }
     const html = ReactDOM.renderToStaticMarkup(<Html {...data} />)
 

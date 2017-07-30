@@ -1,6 +1,10 @@
-import * as path from 'path'
-import * as webpack from 'webpack'
-import * as _ from 'lodash'
+//import * as path from 'path'
+//import * as webpack from 'webpack'
+//import * as _ from 'lodash'
+
+import path = require('path')
+import webpack = require('webpack')
+import _ = require('lodash')
 
 let AssetsPlugin = require('assets-webpack-plugin') as any;
 
@@ -91,7 +95,30 @@ export default ({ DEBUG = false, VERBOSE = false }: CommandLine = {}) => {
       rules: [
         {
           test: /\.tsx?$/,
-          loader: 'awesome-typescript-loader',
+          use: [
+            {
+              loader: 'babel-loader',
+              options: {
+                plugins: [
+                  'transform-react-jsx',
+                  [
+                    'react-css-modules',
+                    {
+                      context: ROOT,
+                      generateScopedName: CSS_SCOPE_NAME,
+                    },
+                  ],
+                ],
+              }
+            },
+            {
+              loader: 'awesome-typescript-loader',
+              options: {
+                module: "es2015",
+                jsx: "preserve",
+              },
+            },
+          ],
         },
         {
           enforce: 'pre',
