@@ -126,25 +126,6 @@ export default ({ DEBUG = false, VERBOSE = false }: CommandLine = {}) => {
             'sass-loader',
           ],
         },
-        {
-          test: /\.txt$/,
-          loader: 'raw-loader',
-        },
-        {
-          test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
-          loader: 'url-loader',
-          query: {
-          name: DEBUG ? '[path][name].[ext]?[hash]' : '[hash].[ext]',
-          limit: 10000,
-          },
-        },
-        {
-          test: /\.(eot|ttf|wav|mp3)$/,
-          loader: 'file-loader',
-          query: {
-          name: DEBUG ? '[path][name].[ext]?[hash]' : '[hash].[ext]',
-          },
-        },
       ],
     },
 
@@ -203,7 +184,7 @@ export default ({ DEBUG = false, VERBOSE = false }: CommandLine = {}) => {
       // Emit a file with assets paths
       // https://github.com/sporto/assets-webpack-plugin#options
       new AssetsPlugin({
-        path: path.resolve(__dirname, '../build'),
+        path: path.resolve(__dirname, 'build'),
         filename: 'assets.js',
         processOutput: (x: any) => `module.exports = ${JSON.stringify(x)};`,
       }),
