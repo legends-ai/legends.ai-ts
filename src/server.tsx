@@ -2,9 +2,11 @@ import * as koa from 'koa'
 import * as koaBodyParser from 'koa-bodyparser'
 import * as koaRouter from 'koa-router'
 import * as koaServe from 'koa-static'
+import * as maxmind from 'maxmind'
 import * as React from 'react'
 import * as ReactDOM from 'react-dom/server'
-import { port } from '~src/config'
+import { DEFAULT_REGION, GEOLITE_PATH, PORT } from '~src/config'
+import geomap from '~src/geomap'
 import universalRouter from '~src/router'
 
 import App from '~components/App'
@@ -18,6 +20,7 @@ let assets = require('./assets') as any
 
 const app = new koa()
 const router = new koaRouter()
+const geolite = maxmind.openSync(GEOLITE_PATH);
 
 router.get('/ping', ctx => ctx.response.status = 200)
 
@@ -29,15 +32,20 @@ app
   .use(async (ctx, next) => {
     const css = new Set()
 
+    // Only needed for isomorphic-style-loader
     const context = {
-      // Enables critical path CSS rendering
-      // https://github.com/kriasoft/isomorphic-style-loader
       insertCss: (...styles: Style[]) => {
         styles.forEach(style => css.add(style._getCss()))
       },
     }
 
-    const route = await universalRouter.resolve({ path: ctx.path, query: ctx.query })
+    const geo = geolite.get(ctx.request.ip.split(':').slice(-1)[0])
+    let region = (geo && geo.country && geomap[geo.country.iso_code]) || DEFAULT_REGION
+
+    const route = await universalRouter.resolve({
+      path: ctx.path, query: ctx.query, region
+    })
+
     const data = {
       ...route,
       script: assets.js,
@@ -46,12 +54,13 @@ app
       ),
       style: [...css].join(''),
     }
+
     const html = ReactDOM.renderToStaticMarkup(<Html {...data} />)
 
     ctx.status = 200
     ctx.body = `<!doctype html>${html}`
   })
 
-app.listen(port, () => {
-  console.log(`The server is running at http://localhost:${port}/`)
+app.listen(PORT, () => {
+  console.log(`The server is running at http://localhost:${PORT}/`)
 })

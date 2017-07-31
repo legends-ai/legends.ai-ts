@@ -115,7 +115,6 @@ export default ({ DEBUG = false, VERBOSE = false }: CommandLine = {}) => {
               loader: 'awesome-typescript-loader',
               options: {
                 module: "es2015",
-                jsx: "preserve",
               },
             },
           ],

@@ -2,7 +2,9 @@
   "name": "legends.ai",
   "private": true,
   "scripts": {
-    "devbuild": "rm -rf build && tcm src -o types && webpack --env.DEBUG"
+    "geodata-pull": "scripts/update_geodata.sh",
+    "devbuild": "rm -rf build && tcm src -o types && webpack --env.DEBUG",
+    "start": "npm run devbuild && node build/server.js"
   },
   "dependencies": {
     "history": "^4.6.3",
@@ -10,6 +12,7 @@
     "koa-bodyparser": "^4.2.0",
     "koa-router": "^7.2.1",
     "koa-static": "^4.0.1",
+    "maxmind": "^2.2.0",
     "normalize.css": "^7.0.0",
     "query-string": "^5.0.0",
     "react": "^15.6.1",
@@ -23,6 +26,7 @@
     "@types/koa-router": "^7.0.22",
     "@types/koa-static": "^3.0.0",
     "@types/lodash": "^4.14.71",
+    "@types/maxmind": "^2.0.2",
     "@types/prop-types": "^15.5.1",
     "@types/query-string": "^5.0.0",
     "@types/react": "^15.6.0",
