@@ -1,8 +1,7 @@
-import * as koa from 'koa'
-import * as koaBodyParser from 'koa-bodyparser'
-import * as koaRouter from 'koa-router'
-import * as koaServe from 'koa-static'
+import * as express from 'express'
+import * as bodyParser from 'body-parser'
 import * as maxmind from 'maxmind'
+import * as path from 'path'
 import * as React from 'react'
 import * as ReactDOM from 'react-dom/server'
 import { DEFAULT_REGION, GEOLITE_PATH, PORT } from '~src/config'
@@ -12,24 +11,22 @@ import universalRouter from '~src/router'
 import App from '~components/App'
 import Html from '~components/Html'
 
-// import type
 import { Style } from 'isomorphic-style-loader/lib/withStyles'
 
 // import client assets
 let assets = require('./assets') as any
 
-const app = new koa()
-const router = new koaRouter()
-const geolite = maxmind.openSync(GEOLITE_PATH);
+const app = express()
+const geolite = maxmind.openSync(GEOLITE_PATH)
 
-router.get('/ping', ctx => ctx.response.status = 200)
+app.get('/ping', (req, res) => res.status(200))
 
 app
-  .use(koaServe(__dirname + '/public'))
-  .use(koaBodyParser())
-  .use(router.routes())
-  .use(router.allowedMethods())
-  .use(async (ctx, next) => {
+  .use(express.static(path.resolve(__dirname, 'public')))
+  .use(bodyParser.urlencoded({ extended: true }))
+  .use(bodyParser.json())
+
+app.get("*", async (req, res, next) => {
     const css = new Set()
 
     // Only needed for isomorphic-style-loader
@@ -39,11 +36,11 @@ app
       },
     }
 
-    const geo = geolite.get(ctx.request.ip.split(':').slice(-1)[0])
+    const geo = geolite.get(req.ip.split(':').slice(-1)[0])
     let region = (geo && geo.country && geomap[geo.country.iso_code]) || DEFAULT_REGION
 
     const route = await universalRouter.resolve({
-      path: ctx.path, query: ctx.query, region
+      path: req.path, query: req.query, region
     })
 
     const data = {
@@ -57,10 +54,16 @@ app
 
     const html = ReactDOM.renderToStaticMarkup(<Html {...data} />)
 
-    ctx.status = 200
-    ctx.body = `<!doctype html>${html}`
+    res.status(200)
+    res.send(`<!doctype html>${html}`)
   })
 
-app.listen(PORT, () => {
-  console.log(`The server is running at http://localhost:${PORT}/`)
-})
+let moduleAny = module as any
+if (!moduleAny.hot)
+  app.listen(PORT, () => console.log(`The server is running at http://localhost:${PORT}/`))
+else {
+  (app as any).hot = moduleAny.hot
+  moduleAny.hot.accept('./router')
+}
+
+export default app

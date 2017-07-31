@@ -1,5 +1,5 @@
-import * as React from 'react';
-import * as styles from './Home.css';
+import * as React from 'react'
+import * as styles from './Home.css'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
 
 interface HomeProps {

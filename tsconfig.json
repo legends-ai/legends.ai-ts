@@ -6,6 +6,10 @@
     "moduleResolution": "node",
     "target": "es2017",
     "jsx": "preserve",
+    "lib": [
+      "dom",
+      "es2017"
+    ],
     "baseUrl": "./",
     "rootDirs": [
       "src",
@@ -18,6 +22,7 @@
   },
   "include": [
     "./src/**/*",
-    "./types/**/*"
+    "./types/**/*",
+    "./scripts/**/*"
   ]
 }

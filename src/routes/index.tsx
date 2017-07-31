@@ -1,5 +1,6 @@
 import * as React from 'react'
 import Layout from '~components/Layout'
+
 import { ActionArgs } from '~src/router'
 
 // The top-level (parent) route
@@ -10,7 +11,7 @@ export default {
   ],
 
   async action({ next, params }: ActionArgs) {
-    const route = await next();
+    const route = await next()
 
     route.title = `${route.title || ''} | Legends.ai`
     route.description = route.description || ''
@@ -20,7 +21,7 @@ export default {
       </Layout>
     )
 
-    return route;
+    return route
   },
 
   // Keep in mind, routes are evaluated in order

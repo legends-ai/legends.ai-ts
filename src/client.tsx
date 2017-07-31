@@ -7,6 +7,8 @@ import { createPath } from 'history/PathUtils'
 import App from './components/App'
 import router from './router'
 
+const deepForceUpdate = require('react-deep-force-update')
+
 const history = createBrowserHistory()
 
 const context = {
@@ -63,7 +65,7 @@ let onRenderComplete = function initialRenderComplete(r: any, l: Location) {
 }
 
 const container = document.getElementById('app')
-let appInstance
+let appInstance: void | Element | React.Component<any, React.ComponentState>
 let currentLocation = history.location
 
 // Re-render the app when window.location changes
@@ -99,7 +101,7 @@ async function onLocationChange(location: Location, action: Action) {
       return
     }
 
-    appInstance = ReactDOM.render(
+    let appInstance = ReactDOM.render(
       <App context={context}>
         {route.component}
       </App>,
@@ -152,4 +154,17 @@ function updateCustomMeta(property: string, content: string) {
 
 function updateLink(rel: string, href: string) {
   updateTag('link', 'rel', rel, 'href', href)
+}
+
+let moduleAny = module as any
+
+if (moduleAny.hot) {
+  moduleAny.hot.accept('./router', () => {
+    if (appInstance) {
+      // Force-update the whole tree, including components that refuse to update
+      deepForceUpdate(appInstance)
+    }
+
+    onLocationChange(currentLocation, "PUSH")
+  });
 }

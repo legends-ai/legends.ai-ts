@@ -35,4 +35,4 @@ const Html = ({ title, description, style, script, children }: HtmlProps) => {
   )
 }
 
-export default Html;
+export default Html
