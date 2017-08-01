@@ -5,15 +5,15 @@ const ContextType = {
   insertCss: PropTypes.func.isRequired 
 }
 
-interface AppProps {
+interface Props {
   context: { insertCss: (x: string) => void }
 }
 
-class App extends React.Component<AppProps, {}> {
+class App extends React.Component<Props, {}> {
 
   static childContextTypes = ContextType
 
-  constructor(props: AppProps) {
+  constructor(props: Props) {
     super(props)
   }
 

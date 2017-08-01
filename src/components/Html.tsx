@@ -1,6 +1,6 @@
 import * as React from "react"
 
-interface HtmlProps {
+interface Props {
   title: string,
   description: string,
   style?: string,
@@ -8,7 +8,7 @@ interface HtmlProps {
   children: string,
 }
 
-const Html = ({ title, description, style, script, children }: HtmlProps) => {
+const Html = ({ title, description, style, script, children }: Props) => {
   return (
     <html className="no-js" lang="en">
       <head>

@@ -2,11 +2,11 @@ import * as React from 'react';
 import * as styles from './Home.css';
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
 
-interface HomeProps {
+interface Props {
   region: string
 }
 
-const Home = (props: HomeProps) => {
+const Home = (props: Props) => {
   return (
     <div className="container" styleName="home">
       <div className="row">
@@ -16,4 +16,4 @@ const Home = (props: HomeProps) => {
   )
 }
 
-export default withStyles<HomeProps>(styles as any)(Home)
+export default withStyles<Props>(styles as any)(Home)
