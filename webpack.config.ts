@@ -1,12 +1,7 @@
-//import * as path from 'path'
-//import * as webpack from 'webpack'
-//import * as _ from 'lodash'
+import * as path from 'path'
+import * as webpack from 'webpack'
 
-import path = require('path')
-import webpack = require('webpack')
-import _ = require('lodash')
-
-let AssetsPlugin = require('assets-webpack-plugin') as any;
+let AssetsPlugin = require('assets-webpack-plugin') as any
 
 interface CommandLine {
   DEBUG?: boolean,
@@ -82,14 +77,13 @@ export default ({ DEBUG = false, VERBOSE = false }: CommandLine = {}) => {
     },
   }
 
+  const commonOutput = {
+    publicPath: '/assets/',
+    pathinfo: VERBOSE,
+  }
+
   const commonConfig: webpack.Configuration = {
     context: ROOT,
-
-    output: {
-      path: path.resolve(__dirname, 'build/public/assets'),
-      publicPath: '/assets/',
-      sourcePrefix: '  ',
-    },
 
     module: {
       rules: [
@@ -181,25 +175,28 @@ export default ({ DEBUG = false, VERBOSE = false }: CommandLine = {}) => {
       errorDetails: true,
     },
 
-    plugins: [
-      new webpack.LoaderOptionsPlugin({ debug: DEBUG })
-    ],
-
     externals: {
       "react": "React",
       "react-dom": "ReactDOM",
     }
   }
 
-  const clientConfig = _.merge({}, commonConfig, {
-    entry: './client.tsx',
+  const clientConfig: webpack.Configuration = {
+    ...commonConfig,
 
-    output: {
-      filename: DEBUG ? '[name].js?[hash]' : '[name].[chunkhash].js',
-      chunkFilename: DEBUG ? '[name].[id].js?[hash]' : '[name].[id].[chunkhash].js',
+    name: "client",
+    target: 'web',
+
+    entry: {
+      "client" : './client.tsx',
     },
 
-    target: 'web',
+    output: {
+      ...commonOutput,
+      path: path.resolve(__dirname, 'build/public/assets'),
+      filename: DEBUG ? '[name].js?' : '[name].[chunkhash:8].js',
+      chunkFilename: DEBUG ? '[name].chunk.js?' : '[name].[chunkhash:8].chunk.js',
+    },
 
     plugins: [
 
@@ -212,7 +209,7 @@ export default ({ DEBUG = false, VERBOSE = false }: CommandLine = {}) => {
       new AssetsPlugin({
         path: path.resolve(__dirname, 'build'),
         filename: 'assets.js',
-        processOutput: (x: any) => `module.exports = ${JSON.stringify(x)};`,
+        processOutput: (x: any) => `module.exports = ${JSON.stringify(x)}`,
       }),
 
       // Assign the module and chunk ids by occurrence count
@@ -240,19 +237,25 @@ export default ({ DEBUG = false, VERBOSE = false }: CommandLine = {}) => {
     // Choose a developer tool to enhance debugging
     // http://webpack.github.io/docs/configuration.html#devtool
     devtool: DEBUG ? 'source-map' : false,
-  })
+  }
 
-  const serverConfig = _.merge(true, {}, commonConfig, {
-    entry: './server.tsx',
+  const serverConfig: webpack.Configuration = {
+    ...commonConfig,
+
+    name: "server",
+    target: 'node',
+
+    entry: {
+      "server": './server.tsx',
+    },
 
     output: {
+      ...commonOutput,
       path: path.resolve(__dirname, 'build'),
       filename: 'server.js',
       chunkFilename: 'server.[name].js',
       libraryTarget: 'commonjs2',
     },
-
-    target: 'node',
 
     externals: [
       /^\.\/assets$/,
@@ -276,7 +279,7 @@ export default ({ DEBUG = false, VERBOSE = false }: CommandLine = {}) => {
     },
 
     devtool: 'source-map',
-  });
+  }
   
   return [clientConfig, serverConfig]
 }
