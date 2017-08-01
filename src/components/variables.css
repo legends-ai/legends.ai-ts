@@ -1,0 +1,40 @@
+:root {
+  /*
+   * Typography
+   * ======================================================================== */
+
+  --font-family-base: 'Open Sans', 'HelveticaNeue-Light', sans-serif;
+  --font-family-head: 'Montserrat', 'HelveticaNeue-Light', sans-serif;
+
+  /*
+   * Layout
+   * ======================================================================== */
+
+  --max-content-width: 1000px;
+
+  /*
+   * Media queries breakpoints
+   * ======================================================================== */
+
+  --screen-xs-min: 480px;  /* Extra small screen / phone */
+  --screen-sm-min: 768px;  /* Small screen / tablet */
+  --screen-md-min: 992px;  /* Medium screen / desktop */
+  --screen-lg-min: 1200px; /* Large screen / wide desktop */
+  --deep-purple: #394366;
+  --deeper-purple: #383c69;
+  --darker-purple: #28304a;
+  --darker-deep-purple: #2e3857;
+  --dark-purple: #424d73;
+  --faded-dark-purple: #7883a7;
+  --faded-purple: #687192;
+  --text-purple: #99a1bb;
+  --yellow: #ffea44;
+  --white: #DADADA;
+  --green: #57c681;
+  --red: #de3258;
+  --orange: #eb8638;
+  --blue: #37aaff;
+  --purple: #dc84ff;
+  --cyan: cyan;
+}
+

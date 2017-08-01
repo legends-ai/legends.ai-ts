@@ -10,7 +10,7 @@ interface LayoutProps {
 
 const Layout = ({ children, params, appError = false }: LayoutProps) => (
   <div>
-    {appError && <h1>Oops! Looks like something went wrong. Try refreshing the browser.</h1>}
+    {appError && <h1 styleName="error">Oops! Looks like something went wrong. Try refreshing the browser.</h1>}
     {React.Children.only(children)}
   </div>
 )

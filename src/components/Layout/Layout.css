@@ -1,0 +1,367 @@
+@import 'normalize.css/normalize.css';
+@import '../variables.css';
+
+/*
+ * Base styles
+ * ========================================================================== */
+
+body, html {
+  font-weight: normal;
+  font: 12px/1.2 var(--font-family-base);
+  color: var(--text-purple);
+}
+body {
+  background: var(--darker-purple);
+  /* TODO: mobile compat, this is a temp fix */
+  min-width: 1100px;
+  position: relative;
+}
+
+::-webkit-scrollbar {
+  background: transparent;
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--text-purple);
+  border-radius: 8px;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: var(--text-purple);
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: var(--text-purple);
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: var(--text-purple);
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: var(--text-purple);
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Montserrat';
+  font-weight: normal;
+  margin: 0;
+}
+h1,h4 {
+  font-size: 25px;
+}
+h2,h5 {
+  font-size: 14px;
+}
+h3,h6{
+  font-size: 10px;
+}
+h2,h3,h5,h6 {
+  font-weight: 400;
+}
+h4,h5,h6 {
+  font-family: 'open sans';
+}
+
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+* {
+  box-sizing: border-box;
+}
+
+button, a {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 10px 0;
+  padding: 0;
+}
+a {
+  color: var(--text-purple);
+  text-decoration: none;
+}
+a:hover, a:focus {
+  text-decoration: none;
+  color: var(--white);
+}
+a:active {
+  text-decoration: none;
+  color: var(--white);
+}
+a:visited {
+  text-decoration: none;
+}
+table {
+  border-collapse:collapse;
+}
+
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input, textarea, button, a {
+  transition: all 200ms ease-in-out;
+  color: inherit;
+  &:focus {
+    outline: none;
+  }
+}
+
+button {
+  border: none;
+  background: none;
+  padding: 0;
+  border-radius: 4px;
+}
+
+input {
+  font-family: 'open sans';
+  border: none;
+  color: var(--text-purple);
+  border-bottom: 2px solid var(--faded-dark-purple);
+  background: none;
+  outline: none;
+  border-radius: 0;
+  line-height: 14px;
+  &:hover {
+    color: var(--text-purple);
+    border-bottom-color: inherit;
+  }
+  &:focus {
+    color: var(--white);
+    border-bottom-color: inherit;
+  }
+}
+
+
+/* animations */
+@keyframes :global(spin) {
+  100% {
+    transform:rotate(360deg);
+  }
+}
+@keyframes :global(live) {
+  80% {
+    box-shadow: 0 0 0 2px;
+  }
+  100% {
+    box-shadow: 0 0 0 4px transparent;
+  }
+}
+@keyframes :global(flyIn) {
+    0% {
+      opacity: 0;
+      top: -50px;
+      right: -50px;
+      transform: rotateZ(-90deg);
+    }
+    100% {
+      opacity: 1;
+      top: 0;
+      right: 0;
+    }
+}
+
+
+/*
+ * Globals
+ * ========================================================================== */
+
+:global(.browserupgrade) {
+  margin: 20px 0;
+  background: #ccc;
+  color: #000;
+  padding: 20px 0;
+}
+
+:global(.table) {
+  width: 100%;
+  position: relative;
+  table-layout: fixed;
+  & th {
+    padding: 5px;
+  }
+  & tbody tr {
+    color: var(--white);
+    & td {
+      text-align: left;
+      border-top: none;
+      padding: 5px;
+    }
+    &:nth-child(even) {
+      background: var(--dark-purple);
+    }
+  }
+  & thead tr th {
+    border-bottom: none;
+    text-transform: uppercase;
+  }
+  & td {
+    overflow: hidden;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+  }
+}
+
+:global(.hidden) {
+  display: none;
+}
+
+:global(.clear) {
+  clear: both;
+}
+:global(.disabled) {
+  pointer-events: none;
+}
+:global(.col) {
+  padding: 0;
+}
+:global(.white) {
+  color: var(--white);
+}
+:global(.text-color) {
+  color: var(--text-purple);
+}
+:global(.yellow) {
+  color: var(--yellow);
+}
+:global(.green) {
+  color: var(--green);
+}
+:global(.orange) {
+  color: var(--orange);
+}
+:global(.red) {
+  color: var(--red);
+}
+:global(.blue) {
+  color: var(--blue);
+}
+:global(.cyan) {
+  color: var(--cyan);
+}
+:global(.purple) {
+  color: var(--purple);
+}
+:global(.back-fill) {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/*global grid system*/
+:global .col-1 {
+  width: 8.33%;
+}
+:global .col-2 {
+  width: 16.66%;
+}
+:global .col-3 {
+  width: 25%;
+}
+:global .col-4 {
+  width: calc(100%  /3);
+}
+:global .col-5 {
+  width: 41.66%;
+}
+:global .col-6 {
+  width: 50%;
+}
+:global .col-7 {
+  width: 58.33%;
+}
+:global .col-8 {
+  width: 66.66%;
+}
+:global .col-9 {
+  width: 75%;
+}
+:global .col-10 {
+  width: 83.33%;
+}
+:global .col-11 {
+  width: 91.66%;
+}
+:global .col-12 {
+  width: 100%;
+}
+:global .col-1,
+:global .col-2,
+:global .col-3,
+:global .col-4,
+:global .col-5,
+:global .col-6,
+:global .col-7,
+:global .col-8,
+:global .col-9,
+:global .col-10,
+:global .col-11,
+:global .col-12 {
+  display: block;
+  float: left;
+  position: relative;
+}
+:global .row {
+  clear: both;
+}
+:global .col-middle {
+  display: block;
+  margin: auto;
+  float: none;
+}
+:global .text-center {
+  text-align: center;
+}
+:global .page-wrapper {
+  width: 1100px;
+  margin: auto;
+}
+
+/*layout specific styles HERE*/
+
+.error {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  font-size: 15px;
+  color: var(--white);
+  background: var(--red);
+  padding: 10px 5px;
+  text-align: center;
+  z-index: 9001;
+}
