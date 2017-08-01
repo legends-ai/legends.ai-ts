@@ -15,4 +15,4 @@ const Layout = ({ children, params, appError = false }: Props) => (
   </div>
 )
 
-export default withStyles<Props>(styles as any)(Layout)
+export default withStyles<Props>(styles)(Layout)

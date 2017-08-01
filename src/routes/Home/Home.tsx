@@ -6,14 +6,12 @@ interface Props {
   region: string
 }
 
-const Home = (props: Props) => {
-  return (
-    <div className="container" styleName="home">
-      <div className="row">
-        Legends.ai - {props.region}
-      </div>
+const Home = (props: Props) => (
+  <div className="container" styleName="home">
+    <div className="row">
+      Legends.ai - {props.region}
     </div>
-  )
-}
+  </div>
+)
 
-export default withStyles<Props>(styles as any)(Home)
+export default withStyles<Props>(styles)(Home)
