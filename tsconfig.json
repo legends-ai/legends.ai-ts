@@ -5,7 +5,7 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "target": "es2017",
-    "jsx": "preserve",
+    "jsx": "react",
     "baseUrl": "./",
     "lib": [
       "dom",

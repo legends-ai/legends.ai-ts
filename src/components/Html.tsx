@@ -35,4 +35,4 @@ const Html = ({ title, description, style, script, children }: Props) => {
   )
 }
 
-export default Html;
+export default Html

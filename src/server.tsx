@@ -20,7 +20,7 @@ let assets = require('./assets') as any
 
 const app = new koa()
 const router = new koaRouter()
-const geolite = maxmind.openSync(GEOLITE_PATH);
+const geolite = maxmind.openSync(GEOLITE_PATH)
 
 router.get('/ping', ctx => ctx.response.status = 200)
 

@@ -1,5 +1,5 @@
-import * as React from 'react';
-import * as styles from './Home.css';
+import * as React from 'react'
+import * as styles from './Home.css'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
 }
 
 const Home = (props: Props) => (
-  <div className="container" styleName="home">
+  <div className={`container ${styles.home}`}>
     <div className="row">
       Legends.ai - {props.region}
     </div>
