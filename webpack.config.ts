@@ -139,6 +139,7 @@ export default ({ DEBUG = false, VERBOSE = false }: CommandLine = {}) => {
       alias: {
         '~src': ROOT,
         '~components': ROOT + "/components",
+        '~utils': ROOT + "/utils",
       }
     },
 

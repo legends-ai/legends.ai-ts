@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Layout from '~components/Layout'
+import Layout from '~components/shared/Layout'
 import { ActionArgs } from '~src/router'
 
 // The top-level (parent) route
@@ -29,4 +29,3 @@ export default {
   ],
   
 }
-

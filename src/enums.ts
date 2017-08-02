@@ -1,0 +1,19 @@
+export enum Tier {
+  UNRANKED,
+  BRONZE,
+  SILVER,
+  GOLD,
+  PLATINUM,
+  DIAMOND,
+  MASTER,
+  CHALLENGER,
+}
+
+export enum Division {
+  UNDEFINED_DIVISION,
+  DIVISION_I,
+  DIVISION_II,
+  DIVISION_III,
+  DIVISION_IV,
+  DIVISION_V,
+}

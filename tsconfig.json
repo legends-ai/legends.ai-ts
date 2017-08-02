@@ -2,6 +2,7 @@
   "compilerOptions": {
     "sourceMap": true,
     "strict": true,
+    "preserveConstEnums": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "target": "es2017",
@@ -17,7 +18,8 @@
     ],
     "paths": {
       "~src/*": ["./src/*"],
-      "~components/*": ["./src/components/*"]
+      "~components/*": ["./src/components/*"],
+      "~utils/*": ["./src/utils/*"]
     }
   },
   "include": [

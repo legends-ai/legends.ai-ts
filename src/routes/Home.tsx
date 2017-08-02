@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Home from './Home'
+import Home from '~components/Home'
 import { ActionArgs } from '~src/router'
 
 export default {
