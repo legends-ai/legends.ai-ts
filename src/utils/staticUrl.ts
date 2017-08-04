@@ -1,11 +1,15 @@
-import { Tier, Division } from "~src/enums"
+import { STATIC_HOST } from '~src/config'
+import { Tier, Division } from '~src/enums'
+import { Rank } from '~types'
+import * as format from '~utils/format'
 
-export const rank = (tier: Tier = Tier.UNRANKED, division: Division = Division.UNDEFINED_DIVISION) => {
+export const rank = ({ tier = Tier.UNRANKED, division = Division.UNDEFINED_DIVISION }: Rank) => {
   if (tier !== Tier.UNRANKED) {
+    const fTier = format.tier(tier)
     if (division !== Division.UNDEFINED_DIVISION) {
-      return `https://static.asuna.io/league/icons/ranked/tier/${tier}_${division}.png`
+      return `${STATIC_HOST}/league/icons/ranked/tier/${fTier}_${format.division(division).toLowerCase()}.png`
     }
-    return `https://static.asuna.io/league/icons/ranked/base/${tier}.png`
+    return `${STATIC_HOST}/league/icons/ranked/base/${fTier}.png`
   }
-  return 'https://static.asuna.io/league/icons/ranked/base/provisional.png'
+  return `${STATIC_HOST}/league/icons/ranked/base/provisional.png`
 }

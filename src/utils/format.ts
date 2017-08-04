@@ -1,11 +1,11 @@
 import { Tier, Division } from '~enums'
 import { Rank } from '~src/types'
 
-export const percent = (n: number, precision: number = 3) => {
+export const percent = (n: number, fractionDigits: number = 2) => {
   if (n == 1)
     return '100'
   else
-    return (n * 100).toPrecision(precision)
+    return (n * 100).toFixed(fractionDigits)
 }
 
 export const tier = (tier: Tier) => Tier[tier].toLowerCase()

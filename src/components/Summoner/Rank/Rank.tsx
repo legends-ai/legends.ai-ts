@@ -24,20 +24,50 @@ const Rank = ({
 }: Props) => {
   const queueMeta = queueMetaMap[Queue[queue]] || {}
 
-  if (tier == Tier.UNRANKED || division == Division.UNDEFINED_DIVISION)
-    return (
-      <div className={styles.rank}>
-        <div className={styles.image}>
-          <img src={staticUrl.rank()} />
-          <h1>{queueMeta.short}</h1>
+  // fucking rip, I wish javascript allowed if/else to be used as rhs expressions
+  let image, details
+  const isRankDefined = tier !== Tier.UNRANKED && division !== Division.UNDEFINED_DIVISION
+
+  // This is pretty cancer because image/details are technically mutable
+  if (!isRankDefined) {
+    image = staticUrl.rank({ tier: Tier.UNRANKED, division: Division.UNDEFINED_DIVISION })
+    details = (
+      <div className={styles.container}>
+        <h1 className={styles.unranked}>UNRANKED</h1>
+      </div>
+    )
+  } else {
+    image = staticUrl.rank({ tier, division })
+    // TODO(p): handle case where wins and losses are both 0
+    details = (
+      <div className={styles.container}>
+        <h1>{format.rank({ tier, division })}</h1>
+        <div className={styles.description}>
+          <h3>{leaguePoints}</h3>
+          <span>LP</span>
         </div>
-        <div className={styles.container}>
-          <h1 className={styles.unranked}>UNRANKED</h1>
+        <div className={styles.description}>
+          <h3>{wins && losses && format.percent(wins / (wins + losses))}</h3>
+          <span>winrate</span>
+        </div>
+        <div className={styles.description}>
+          <h3>{wins} - {losses}</h3>
+          <span>record</span>
         </div>
       </div>
     )
+  }
 
-  return (<div></div>)
+  return (
+    <div className={styles.rank}>
+      <div className={styles.image}>
+        <img src={image} />
+        <h1>{queueMeta.short}</h1>
+      </div>
+      {details}
+      {isRankDefined && <div className="clear" />}
+    </div>
+  )
 }
 
 export default withStyles<Props>(styles)(Rank)
