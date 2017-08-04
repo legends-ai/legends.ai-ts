@@ -1,5 +1,5 @@
 @import 'normalize.css/normalize.css';
-@import '../../variables.css';
+@import 'components/variables.css';
 
 /*
  * Base styles

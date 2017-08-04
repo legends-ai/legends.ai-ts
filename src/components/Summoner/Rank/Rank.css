@@ -1,0 +1,44 @@
+@import 'components/variables.css';
+
+.rank {
+  margin: 5px;
+  & img {
+    height: 45px;
+    margin: -4px auto;
+    display: block;
+  }
+  & .unranked {
+    line-height: 50px;
+    color: var(--faded-purple);
+  }
+  & .description {
+    float: left;
+    margin-right: 10px;
+  }
+  & h1 {
+    font-size: 14px;
+    color: var(--white);
+    & span {
+      color: var(--text-purple);
+    }
+  }
+  & .image {
+    float: left;
+     & h1 {
+       margin-top: 3px;
+       font-size: 10px;
+     }
+  }
+  & h2 {
+    font-size: 12px;
+    color: var(--white);
+  }
+  & h3 {
+    color: var(--white);
+    font-size: 12px;
+  }
+}
+.container {
+  float: left;
+  padding: 5px 10px;
+}

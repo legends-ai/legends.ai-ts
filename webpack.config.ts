@@ -113,6 +113,7 @@ export default ({ DEBUG = false, VERBOSE = false }: CommandLine = {}) => {
                 localIdentName: CSS_SCOPE_NAME,
                 // CSS Nano http://cssnano.co/options/
                 minimize: !DEBUG,
+                camelCase: true
               },
             },
             { loader: 'postcss-loader', options: postCssOptions.default },
@@ -122,7 +123,7 @@ export default ({ DEBUG = false, VERBOSE = false }: CommandLine = {}) => {
           test: /\.scss$/,
           use: [
             'isomorphic-style-loader',
-            { loader: 'css-loader', options: { sourceMap: DEBUG, minimize: !DEBUG } },
+            { loader: 'css-loader', options: { sourceMap: DEBUG, minimize: !DEBUG, camelCase: true } },
             { loader: 'postcss-loader', options: postCssOptions.sass },
             'sass-loader',
           ],
@@ -139,6 +140,9 @@ export default ({ DEBUG = false, VERBOSE = false }: CommandLine = {}) => {
       alias: {
         '~src': ROOT,
         '~components': ROOT + "/components",
+        '~constants': ROOT + '/constants',
+        '~enums': ROOT + '/enums',
+        '~types': ROOT + '/types',
         '~utils': ROOT + "/utils",
       }
     },

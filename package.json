@@ -2,8 +2,10 @@
   "name": "legends.ai",
   "private": true,
   "scripts": {
+    "clean": "rm -rf build && rm -rf types/components",
     "geodata-pull": "scripts/update_geodata.sh",
-    "devbuild": "rm -rf build && tcm src -o types && webpack --env.DEBUG",
+    "tcm": "tcm src -c -o types",
+    "devbuild": "npm run clean && npm run tcm && webpack --env.DEBUG",
     "start": "npm run devbuild && node build/server.js"
   },
   "dependencies": {
