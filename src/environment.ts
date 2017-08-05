@@ -16,7 +16,7 @@ function fetchQuery(
   cacheConfig: any,
   uploadables: any,
 ) {
-  return fetch('/graphql', {
+  return fetch(GRAPHQL_ENDPOINT, {
     method: 'POST',
     headers: {
       // Add authentication and other headers here

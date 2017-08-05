@@ -48,7 +48,7 @@ app
 
     const data = {
       ...route,
-      script: assets.js,
+      script: assets.client.js,
       children: ReactDOM.renderToString(
         <App context={context}>{route.component}</App>
       ),

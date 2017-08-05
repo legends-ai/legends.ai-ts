@@ -31,7 +31,9 @@ const Home = (props: Props) => (
           }
         }
       `}
+      variables={{}}
       render={({error, props}: any) => {
+        console.log('renderng')
         if (error) {
           return <div>{error.message}</div>;
         } else if (props) {
@@ -41,7 +43,7 @@ const Home = (props: Props) => (
             </div>
           );
         }
-        return <div>Loading</div>;
+        return <div>Loading...</div>
       }}
     />;
   </div>
