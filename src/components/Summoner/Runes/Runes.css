@@ -1,0 +1,24 @@
+.runes {
+  padding-top: 20px;
+  & .section {
+    display: flex;
+  }
+  & .part {
+    width: 50%;
+    padding-right: 10px;
+  }
+  & .btn {
+    background: var(--dark-purple);
+    padding: 5px 8px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
+    &.selected {
+      background: var(--darker-purple);
+    }
+    &:hover {
+      background: var(--deep-purple);
+      cursor: pointer;
+    }
+  }
+}
