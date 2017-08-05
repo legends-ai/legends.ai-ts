@@ -7,7 +7,7 @@ const {
   QueryRenderer,
   graphql,
 } = require('react-relay');
-const environment = require('../environment');
+const environment = require('~src/environment');
 
 interface Props {
   region: string
