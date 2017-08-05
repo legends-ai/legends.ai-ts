@@ -4,26 +4,29 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles'
 
 import * as classNames from 'classnames'
 import { Riot } from '~types'
+const {graphql, createFragmentContainer} = require('react-relay')
 
 interface Props {
-  masteryPages: Riot.MasteryPage[],
   selectedMasteryPage: number,
-  runePages: Riot.RunePage[],
   selectedRunePage: number,
   onClick: (id: number, type?: string) => void,
   version: string,
   staticData: any,
+  summoner: any,
 }
 
 const Runes = ({
-  masteryPages,
   selectedMasteryPage,
-  runePages,
   selectedRunePage,
   onClick,
   version,
-  staticData
+  staticData,
+  summoner,
 }: Props) => {
+  const runes = JSON.parse(summoner.runes)
+  const masteries = JSON.parse(summoner.masteries)
+  const runePages = runes.pages;
+  const masteryPages = masteries.pages;
   const activeRunePage = runePages.find((page: Riot.RunePage) => page.id == selectedRunePage)
   const activeMasteryPage = masteryPages.find((page: Riot.MasteryPage) => page.id == selectedMasteryPage)
 
@@ -67,4 +70,14 @@ const Runes = ({
   )
 }
 
-export default withStyles<Props>(styles)(Runes)
+export default createFragmentContainer(
+  withStyles<Props>(styles)(Runes),
+  {
+    summoner: graphql`
+      fragment Runes_summoner on Summoner {
+        runes
+        masteries
+      }
+    `
+  }
+);
