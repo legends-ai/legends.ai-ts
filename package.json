@@ -14,6 +14,7 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "history": "^4.6.3",
+    "isomorphic-fetch": "^2.2.1",
     "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",
     "koa-router": "^7.2.1",

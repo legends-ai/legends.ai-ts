@@ -5,6 +5,7 @@ import {
   RecordSource,
   Store,
 } from 'relay-runtime'
+import fetch from 'isomorphic-fetch';
 
 const source = new RecordSource();
 const store = new Store(source);
@@ -38,3 +39,5 @@ const environment = new Environment({
   network,
   store,
 });
+
+export default environment
