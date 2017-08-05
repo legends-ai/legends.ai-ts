@@ -89,10 +89,22 @@ export default ({ DEBUG = false, VERBOSE = false }: CommandLine = {}) => {
       rules: [
         {
           test: /\.tsx?$/,
-          loader: 'awesome-typescript-loader',
-          options: {
-            module: "es2015",
-          },
+          use: [
+            {
+              loader: 'babel-loader',
+              options: {
+                plugins: [
+                  'relay'
+                ]
+              }
+            },
+            {
+              loader: 'awesome-typescript-loader',
+              options: {
+                module: 'es2015',
+              },
+            }
+          ]
         },
         {
           enforce: 'pre',

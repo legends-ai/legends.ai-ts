@@ -6,7 +6,7 @@
     "clean": "rm -rf build && rm -rf types/components",
     "geodata-pull": "scripts/update_geodata.sh",
     "tcm": "tcm src -c -o types",
-    "devbuild": "npm run clean && npm run tcm && webpack --env.DEBUG",
+    "devbuild": "npm run clean && npm run tcm && npm run relay && webpack --env.DEBUG",
     "start": "npm run devbuild && node build/server.js",
     "pull-schema": "scripts/update_graphql.sh",
     "relay": "relay-compiler --src ./src --schema schema.graphql --extensions ts tsx"
