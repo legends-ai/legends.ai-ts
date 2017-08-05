@@ -3,8 +3,8 @@ import * as React from 'react'
 interface Props {
   title: string,
   description: string,
-  style?: string,
-  script?: string,
+  style: string,
+  script: string,
   children: string,
 }
 
@@ -22,14 +22,14 @@ const Html = ({ title, description, style, script, children }: Props) => {
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:200,400,700,900|Open+Sans:300,400,700" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:200,400,700,900|Open+Sans:300,400,700" />
         <link rel="stylesheet" href="https://static.asuna.io/league/fonts/leaguedings/leaguedings.css" />
-        {style && <style id="css" dangerouslySetInnerHTML={{ __html: style }} />}
+        <style id="css" dangerouslySetInnerHTML={{ __html: style }} />
       </head>
       <body>
         <div id="app" dangerouslySetInnerHTML={{ __html: children }} />
         <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
         <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
         <script src="https://d3js.org/d3.v3.min.js" />
-        {script && <script id="source" src={script} />}
+        <script id="source" src={script} />
       </body>
     </html>
   )
