@@ -6,7 +6,9 @@
     "geodata-pull": "scripts/update_geodata.sh",
     "tcm": "tcm src -c -o types",
     "devbuild": "npm run clean && npm run tcm && webpack --env.DEBUG",
-    "start": "npm run devbuild && node build/server.js"
+    "start": "npm run devbuild && node build/server.js",
+    "pull-schema": "scripts/update_graphql.sh",
+    "relay": "relay-compiler --src ./src --schema schema.graphql"
   },
   "dependencies": {
     "classnames": "^2.2.5",
