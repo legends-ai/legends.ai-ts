@@ -6,27 +6,18 @@ import { queueMetaMap } from '~constants'
 import { Tier, Division, Queue } from '~enums'
 import * as staticUrl from '~utils/staticUrl'
 import * as format from '~utils/format'
+const {graphql, createFragmentContainer} = require('react-relay')
 
 interface Props {
-  queue?: Queue
-  tier?: Tier,
-  division?: Division,
-  leaguePoints: number,
-  wins: number,
-  losses: number,
+  position: any,
 }
 
-const Rank = ({
-  queue = Queue.UNDEFINED_QUEUE,
-  tier = Tier.UNRANKED,
-  division = Division.UNDEFINED_DIVISION,
-  leaguePoints, wins, losses
-}: Props) => {
-  const queueMeta = queueMetaMap[Queue[queue]] || {}
+const Rank = ({position}: Props) => {
+  const queueMeta = queueMetaMap[Queue[position.queue]] || {}
 
   // fucking rip, I wish javascript allowed if/else to be used as rhs expressions
   let image, details
-  const isRankDefined = tier !== Tier.UNRANKED && division !== Division.UNDEFINED_DIVISION
+  const isRankDefined = position.rank.tier !== Tier.UNRANKED && position.rank.division !== Division.UNDEFINED_DIVISION
 
   // This is pretty cancer because image/details are technically mutable
   if (!isRankDefined) {
@@ -37,21 +28,21 @@ const Rank = ({
       </div>
     )
   } else {
-    image = staticUrl.rank({ tier, division })
+    image = staticUrl.rank(position.rank)
     // TODO(p): handle case where wins and losses are both 0
     details = (
       <div className={styles.container}>
-        <h1>{format.rank({ tier, division })}</h1>
+        <h1>{format.rank(position.rank)}</h1>
         <div className={styles.description}>
-          <h3>{leaguePoints}</h3>
+          <h3>{position.league_points}</h3>
           <span>LP</span>
         </div>
         <div className={styles.description}>
-          <h3>{wins && losses && format.percent(wins / (wins + losses))}</h3>
+          <h3>{position.wins && position.losses && format.percent(position.wins / (position.wins + position.losses))}</h3>
           <span>winrate</span>
         </div>
         <div className={styles.description}>
-          <h3>{wins} - {losses}</h3>
+          <h3>{position.wins} - {position.losses}</h3>
           <span>record</span>
         </div>
       </div>
@@ -70,4 +61,20 @@ const Rank = ({
   )
 }
 
-export default withStyles<Props>(styles)(Rank)
+export default createFragmentContainer(
+  withStyles<Props>(styles)(Rank),
+  {
+    position: graphql`
+      fragment Rank_position on LeaguePosition {
+        rank {
+          tier
+          division
+        }
+        queue
+        league_points
+        wins
+        losses
+      }
+    `
+  },
+)

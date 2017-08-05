@@ -8,7 +8,7 @@
     "devbuild": "npm run clean && npm run tcm && webpack --env.DEBUG",
     "start": "npm run devbuild && node build/server.js",
     "pull-schema": "scripts/update_graphql.sh",
-    "relay": "relay-compiler --src ./src --schema schema.graphql"
+    "relay": "relay-compiler --src ./src --schema schema.graphql --extensions ts tsx"
   },
   "dependencies": {
     "classnames": "^2.2.5",
