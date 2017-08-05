@@ -6,8 +6,8 @@ import Rank from '~components/Summoner/Rank'
 const {
   QueryRenderer,
   graphql,
-} = require('react-relay');
-import environment from '~src/environment';
+} = require('react-relay')
+import environment from '~src/environment'
 
 interface Props {
   region: string
@@ -32,7 +32,7 @@ const Home = (props: Props) => (
         }
       `}
       variables={{}}
-      render={({error, props}: any) => {
+      render={({ error, props }: any) => {
         console.log('renderng')
         if (error) {
           return <div>{error.message}</div>;
@@ -45,7 +45,7 @@ const Home = (props: Props) => (
         }
         return <div>Loading...</div>
       }}
-    />;
+    />
   </div>
 )
 
