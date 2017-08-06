@@ -16,3 +16,6 @@ export const rank = ({ tier = Tier.UNRANKED, division = Division.UNDEFINED_DIVIS
 
 export const rune = (id: string, version: string) =>
   `https://ddragon.leagueoflegends.com/cdn/${version}/img/rune/${id}.png`
+
+export const mastery = (id: string, version: string) =>
+  `https://ddragon.leagueoflegends.com/cdn/${version}/img/mastery/${id}.png`

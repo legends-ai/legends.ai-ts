@@ -7,6 +7,7 @@ import * as classNames from 'classnames'
 import { identity, groupBy, length, map, values } from 'ramda'
 import { Riot } from '~types'
 
+import MasteriesGraph from '~components/shared/graphs/MasteriesGraph'
 import { RawModule } from '~components/shared/Module'
 import RunesTable from '~components/shared/RunesTable'
 
@@ -77,6 +78,19 @@ class Runes extends React.Component<Props, State> {
                   idToNum={map(length, groupBy(toString, activeRunePage.slots))}
                   version=""
                   staticRunes={staticData.runes} />
+              </div>}
+            </RawModule>
+          </div>
+          <div className={styles.part}>
+            <RawModule>
+              {activeMasteryPage &&
+              <div>
+                <MasteriesGraph
+                  masteries={activeMasteryPage.masteries}
+                  staticMasteriesTrees={staticData.masteryTrees}
+                  staticMasteries={staticData.masteries}
+                  version={version}
+                />
               </div>}
             </RawModule>
           </div>
