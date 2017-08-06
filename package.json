@@ -4,12 +4,12 @@
   "scripts": {
     "lint": "eslint --ext ts,tsx src/ components/",
     "clean": "rm -rf build && rm -rf types/components",
-    "geodata-pull": "scripts/update_geodata.sh",
-    "tcm": "tcm src -c -o types",
-    "devbuild": "npm run clean && npm run tcm && webpack --env.DEBUG",
-    "start": "npm run devbuild && node build/server.js",
+    "pull-geodata": "scripts/update_geodata.sh",
     "pull-schema": "scripts/update_graphql.sh",
-    "relay": "relay-compiler --src ./src --schema schema.graphql --extensions ts tsx"
+    "tcm": "tcm src -c -o types",
+    "relay-compiler": "relay-compiler --src ./src --schema schema.graphql --extensions ts tsx",
+    "devbuild": "npm run clean && npm run tcm && webpack --env.DEBUG",
+    "start": "npm run devbuild && node build/server.js"
   },
   "dependencies": {
     "classnames": "^2.2.5",
@@ -31,6 +31,7 @@
   "devDependencies": {
     "@types/classnames": "^2.2.0",
     "@types/history": "^4.6.0",
+    "@types/isomorphic-fetch": "0.0.34",
     "@types/koa": "^2.0.39",
     "@types/koa-bodyparser": "^3.0.23",
     "@types/koa-router": "^7.0.22",

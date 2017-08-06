@@ -209,12 +209,14 @@ input {
   width: 100%;
   position: relative;
   table-layout: fixed;
-  & th {
+
+  th {
     padding: 5px;
   }
-  & tbody tr {
+
+  tbody tr {
     color: var(--white);
-    & td {
+    td {
       text-align: left;
       border-top: none;
       padding: 5px;
@@ -223,11 +225,13 @@ input {
       background: var(--dark-purple);
     }
   }
-  & thead tr th {
+
+  thead tr th {
     border-bottom: none;
     text-transform: uppercase;
   }
-  & td {
+
+  td {
     overflow: hidden;
     word-wrap: break-word;
     text-overflow: ellipsis;
@@ -237,7 +241,6 @@ input {
 :global(.hidden) {
   display: none;
 }
-
 :global(.clear) {
   clear: both;
 }

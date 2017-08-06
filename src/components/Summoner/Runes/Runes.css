@@ -1,13 +1,13 @@
 .runes {
   padding-top: 20px;
-  & .section {
+  .section {
     display: flex;
   }
-  & .part {
+  .part {
     width: 50%;
     padding-right: 10px;
   }
-  & .btn {
+  .btn {
     background: var(--dark-purple);
     padding: 5px 8px;
     margin-right: 5px;

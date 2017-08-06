@@ -6,6 +6,6 @@ declare module 'react-relay' {
 
   export var QueryRenderer: any
 
-  export function createFragmentContainer<P>(ComponentType, any): ComponentType<P>
+  export function createFragmentContainer(component: ComponentType, fragment: any): any
 
 }

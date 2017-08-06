@@ -5,7 +5,7 @@ import {
   RecordSource,
   Store,
 } from 'relay-runtime'
-import fetch from 'isomorphic-fetch';
+import * as fetch from 'isomorphic-fetch'
 
 const source = new RecordSource();
 const store = new Store(source);
@@ -26,7 +26,7 @@ function fetchQuery(
       query: operation.text, // GraphQL text from input
       variables,
     }),
-  }).then(response => {
+  }).then((response: any) => {
     return response.json();
   });
 }

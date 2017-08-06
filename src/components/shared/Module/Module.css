@@ -1,0 +1,78 @@
+.module {
+  width: 100%;
+  float: left;
+  text-align: left;
+  margin: 4px 0;
+  border-radius: 3px;
+  background: var(--deep-purple);
+  position: relative;
+
+  :global(.table-row) {
+    &:nth-child(even) {
+      background: var(--dark-purple);
+    }
+  }
+}
+
+.title {
+  color: var(--white);
+  clear: both;
+  h1 {
+    padding: 8px;
+    padding-right: 0;
+    font-size: 14px;
+    display: inline-block;
+    text-transform: capitalize;
+  }
+  h2 {
+    padding-left: 8px;
+    font-size: 12px;
+    min-width: 200px;
+    color: var(--text-purple);
+    display: inline-block;
+  }
+  .expand {
+    float: right;
+    font-size: 10px;
+    background: none;
+    text-transform: lowercase;
+    font-weight: bold;
+    color: var(--faded-dark-purple);
+    line-height: 32px;
+    height: 32px;
+    padding: 0 10px;
+    padding-right: 50px;
+    z-index: 200;
+    &.disabled {
+      pointer-events: none;
+      .icon {
+        background: var(--dark-purple);
+        color: var(--deep-purple);
+      }
+    }
+    .icon {
+      font-size: 13px;
+      background: var(--darker-purple);
+      color: var(--white);
+      width: 24px;
+      height: 24px;
+      display: inline-block;
+      line-height: 25px;
+      margin: 4px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      border-radius: 100%;
+      box-shadow: 0 0 0 0px var(--darker-purple), 0 0 0 var(--yellow);
+    }
+    &:hover {
+      color: var(--faded-dark-purple);
+      .icon {
+        color: var(--darker-purple);
+        background: var(--yellow);
+        box-shadow: 0 0 0 6px var(--yellow), 0 3px 3px 6px color(var(--yellow) alpha(-50%));
+      }
+    }
+  }
+}
+

@@ -68,7 +68,7 @@ const Rank = ({ position }: Props) => {
   )
 }
 
-export default createFragmentContainer<Props>(
+export default createFragmentContainer(
   withStyles<Props>(styles)(Rank),
   {
     position: graphql`
