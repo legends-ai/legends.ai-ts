@@ -56,8 +56,8 @@ const MasteriesGraph = ({
   return (
     <div className={styles.masteriesGraph}>
       {
-        staticMasteriesTrees && staticMasteries && TREES.map(name => {
-          return <div key={name} className={`${treesStyles[name]} ${styles.mastery}`}>
+        staticMasteriesTrees && staticMasteries && TREES.map(name => (
+          <div key={name} className={`${treesStyles[name]} ${styles.mastery}`}>
             <h1>{name} {masteriesSum(staticMasteriesTrees[name], rankMap)}</h1>
             {
               staticMasteriesTrees[name].map(({ entries }, idx) =>
@@ -78,7 +78,7 @@ const MasteriesGraph = ({
               )
             }
           </div>
-        })
+        ))
       }
       <div className="clear" />
     </div>

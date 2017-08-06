@@ -4,6 +4,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import { graphql, QueryRenderer } from 'react-relay'
 
 import Rank from '~components/Summoner/Rank'
+import Runes from '~components/Summoner/Runes'
 import environment from '~src/environment'
 
 interface Props {

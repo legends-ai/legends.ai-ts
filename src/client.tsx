@@ -11,7 +11,8 @@ const history = createBrowserHistory()
 
 const context = {
   insertCss: (...styles: any[]) => {
-    return () => styles.map(x => x._insertCss()).forEach(f => f())
+    const removeCss = styles.map(x => x._insertCss())
+    return () => removeCss.forEach(f => f())
   },
 }
 

@@ -12,7 +12,6 @@ import { RawModule } from '~components/shared/Module'
 import RunesTable from '~components/shared/RunesTable'
 
 interface Props {
-  onClick: (id: number, type?: string) => void,
   version: string,
   staticData: any,
   summoner: any,
