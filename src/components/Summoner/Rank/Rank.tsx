@@ -4,12 +4,19 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles'
 
 import { queueMetaMap } from '~constants'
 import { Tier, Division, Queue } from '~enums'
+import { Rank } from '~types'
 import * as staticUrl from '~utils/staticUrl'
 import * as format from '~utils/format'
 const {graphql, createFragmentContainer} = require('react-relay')
 
 interface Props {
-  position: any,
+  position: {
+    rank: Rank,
+    league_points: number,
+    queue: Queue,
+    wins: number,
+    losses: number,
+  },
 }
 
 const Rank = ({ position }: Props) => {
