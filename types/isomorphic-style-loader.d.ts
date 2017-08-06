@@ -1,4 +1,5 @@
 declare module 'isomorphic-style-loader/lib/withStyles' {
+
   import { ComponentType } from 'react'
 
   type Style = string & { _getCss: () => string }

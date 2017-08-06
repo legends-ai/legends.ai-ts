@@ -1,12 +1,9 @@
 import * as React from 'react'
 import * as styles from './Home.css'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
-import Rank from '~components/Summoner/Rank'
+import { graphql, QueryRenderer } from 'react-relay'
 
-const {
-  QueryRenderer,
-  graphql,
-} = require('react-relay')
+import Rank from '~components/Summoner/Rank'
 import environment from '~src/environment'
 
 interface Props {
@@ -33,7 +30,7 @@ const Home = (props: Props) => (
       `}
       variables={{}}
       render={({ error, props }: any) => {
-        console.log('renderng')
+        console.log('rendering')
         if (error) {
           return <div>{error.message}</div>;
         } else if (props) {

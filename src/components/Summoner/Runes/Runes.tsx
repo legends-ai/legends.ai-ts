@@ -1,10 +1,10 @@
 import * as React from 'react'
 import * as styles from './Runes.css'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
+import { graphql, createFragmentContainer } from 'react-relay'
 
 import * as classNames from 'classnames'
 import { Riot } from '~types'
-const {graphql, createFragmentContainer} = require('react-relay')
 
 interface Props {
   selectedMasteryPage: number,
@@ -25,8 +25,8 @@ const Runes = ({
 }: Props) => {
   const runes = JSON.parse(summoner.runes)
   const masteries = JSON.parse(summoner.masteries)
-  const runePages = runes.pages;
-  const masteryPages = masteries.pages;
+  const runePages = runes.pages
+  const masteryPages = masteries.pages
   const activeRunePage = runePages.find((page: Riot.RunePage) => page.id == selectedRunePage)
   const activeMasteryPage = masteryPages.find((page: Riot.MasteryPage) => page.id == selectedMasteryPage)
 

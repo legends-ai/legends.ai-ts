@@ -1,13 +1,13 @@
 import * as React from 'react'
 import * as styles from './Rank.css'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
+import { graphql, createFragmentContainer } from 'react-relay'
 
 import { queueMetaMap } from '~constants'
 import { Tier, Division, Queue } from '~enums'
 import { Rank } from '~types'
 import * as staticUrl from '~utils/staticUrl'
 import * as format from '~utils/format'
-const {graphql, createFragmentContainer} = require('react-relay')
 
 interface Props {
   position: {
@@ -68,7 +68,7 @@ const Rank = ({ position }: Props) => {
   )
 }
 
-export default createFragmentContainer(
+export default createFragmentContainer<Props>(
   withStyles<Props>(styles)(Rank),
   {
     position: graphql`
