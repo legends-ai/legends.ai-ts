@@ -4,7 +4,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles'
 
 interface Props {
   title?: string,
-  children?: React.ReactChildren[]
+  children?: React.ReactNode
 }
 
 const RawModule = ({ title, children }: Props) => (

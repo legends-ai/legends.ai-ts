@@ -13,3 +13,6 @@ export const rank = ({ tier = Tier.UNRANKED, division = Division.UNDEFINED_DIVIS
   }
   return `${STATIC_HOST}/league/icons/ranked/base/provisional.png`
 }
+
+export const rune = (id: string, version: string) =>
+  `https://ddragon.leagueoflegends.com/cdn/${version}/img/rune/${id}.png`

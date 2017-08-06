@@ -4,7 +4,11 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import { graphql, createFragmentContainer } from 'react-relay'
 
 import * as classNames from 'classnames'
+import { identity, groupBy, length, map, values } from 'ramda'
 import { Riot } from '~types'
+
+import { RawModule } from '~components/shared/Module'
+import RunesTable from '~components/shared/RunesTable'
 
 interface Props {
   onClick: (id: number, type?: string) => void,
@@ -66,6 +70,15 @@ class Runes extends React.Component<Props, State> {
         </div>
         <div className={styles.section}>
           <div className={styles.part}>
+            <RawModule>
+              {activeRunePage &&
+              <div>
+                <RunesTable
+                  idToNum={map(length, groupBy(toString, activeRunePage.slots))}
+                  version=""
+                  staticRunes={staticData.runes} />
+              </div>}
+            </RawModule>
           </div>
         </div>
       </div>

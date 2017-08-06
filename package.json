@@ -12,6 +12,7 @@
     "start": "npm run devbuild && node build/server.js"
   },
   "dependencies": {
+    "@types/ramda": "^0.24.6",
     "classnames": "^2.2.5",
     "history": "^4.6.3",
     "isomorphic-fetch": "^2.2.1",
@@ -22,6 +23,7 @@
     "maxmind": "^2.2.0",
     "normalize.css": "^7.0.0",
     "query-string": "^5.0.0",
+    "ramda": "^0.24.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-relay": "^1.1.0",

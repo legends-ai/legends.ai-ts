@@ -1,0 +1,34 @@
+@import 'components/variables.css';
+
+.runes {
+  min-height: 284px;
+  color: var(--white);
+  .rune:nth-child(even) {
+    background: var(--dark-purple);
+  }
+  .rune:last-child {
+    border-radius: 3px;
+  }
+}
+.rune {
+  padding: 5px 10px;
+  img {
+    width: 30px;
+  }
+  b {
+    font-size: 16px;
+    font-weight: normal;
+  }
+  > * {
+    margin-right: 10px;
+  }
+}
+.content {
+  display: inline-block;
+  vertical-align: bottom;
+}
+.description {
+  display: block;
+  font-size: 10px;
+  color: var(--text-purple);
+}
