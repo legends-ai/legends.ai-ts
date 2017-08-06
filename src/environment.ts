@@ -7,8 +7,8 @@ import {
 } from 'relay-runtime'
 import * as fetch from 'isomorphic-fetch'
 
-const source = new RecordSource();
-const store = new Store(source);
+const source = new RecordSource()
+const store = new Store(source)
 
 function fetchQuery(
   operation: any,
@@ -27,17 +27,17 @@ function fetchQuery(
       variables,
     }),
   }).then((response: any) => {
-    return response.json();
-  });
+    return response.json()
+  })
 }
 
 // Create a network layer from the fetch function
-const network = Network.create(fetchQuery);
+const network = Network.create(fetchQuery)
 
 // Create an environment using this network:
 const environment = new Environment({
   network,
   store,
-});
+})
 
 export default environment

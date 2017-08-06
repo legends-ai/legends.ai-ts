@@ -7,7 +7,7 @@ import { Riot } from '~types'
 
 import { MasteryNode, EmptyMasteryNode } from './MasteryNode'
 
-const TREES = ['ferocity', 'cunning', 'resolve'];
+const TREES = ['ferocity', 'cunning', 'resolve']
 const treesStyles: {[key: string]: string} = {
   'ferocity': styles.ferocity,
   'cunning': styles.cunning,
@@ -17,7 +17,7 @@ const treesStyles: {[key: string]: string} = {
 const masteriesSum = (table: MasteriesTree, masteries: MasteriesRankMap): number => {
   return sum(
     chain(_ => _.entries, table).map(
-      entry => masteries[entry.id] || 0));
+      entry => masteries[entry.id] || 0))
 }
 
 type MasteriesRankMap = {[key: number]: number}
@@ -71,13 +71,13 @@ const MasteriesGraph = ({
                           rank={rankMap[item.id] || 0}
                           version={version} />
                       }
-                      return <EmptyMasteryNode />;
+                      return <EmptyMasteryNode />
                     })
                   }
                 </div>
               )
             }
-          </div>;
+          </div>
         })
       }
       <div className="clear" />
@@ -85,4 +85,4 @@ const MasteriesGraph = ({
   )
 }
 
-export default withStyles<Props>(styles)(MasteriesGraph);
+export default withStyles<Props>(styles)(MasteriesGraph)

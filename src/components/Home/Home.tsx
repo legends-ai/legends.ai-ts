@@ -38,7 +38,7 @@ const Home = (props: Props) => (
             <div>
               <Rank position={props.summoner.rankings.current_league_positions[0]} />
             </div>
-          );
+          )
         }
         return <div>Loading...</div>
       }}

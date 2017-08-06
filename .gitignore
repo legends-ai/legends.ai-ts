@@ -6,3 +6,4 @@ yarn-error.log
 geodata
 schema.graphql
 __generated__/
+types/components
