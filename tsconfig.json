@@ -3,7 +3,6 @@
     "sourceMap": true,
     "strict": true,
     "experimentalDecorators": true,
-    "noImplicitAny": false,
     "moduleResolution": "node",
     "target": "es2017",
     "jsx": "react",
