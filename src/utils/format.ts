@@ -8,8 +8,8 @@ export const percent = (n: number, fractionDigits: number = 2) => {
     return (n * 100).toFixed(fractionDigits)
 }
 
-export const tier = (tier: Tier) => Tier[tier].toLowerCase()
+export const tier = (tier: Tier) => tier.toLowerCase()
 
-export const division = (division: Division) => Division[division].split('_')[1]
+export const division = (division: Division) => division.split('_')[1]
 
 export const rank = (rank: Rank) => `${tier(rank.tier)} ${division(rank.division)}`

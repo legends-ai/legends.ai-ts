@@ -20,7 +20,7 @@ interface Props {
 }
 
 const Rank = ({ position }: Props) => {
-  const queueMeta = queueMetaMap[Queue[position.queue]] || {}
+  const queueMeta = queueMetaMap[position.queue] || {}
 
   // fucking rip, I wish javascript allowed if/else to be used as rhs expressions
   let image, details

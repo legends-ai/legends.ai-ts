@@ -1,4 +1,4 @@
-export enum Tier {
+export const enum Tier {
   UNRANKED = "UNRANKED",
   BRONZE = "BRONZE",
   SILVER = "SILVER",
@@ -9,7 +9,7 @@ export enum Tier {
   CHALLENGER = "CHALLENGER",
 }
 
-export enum Division {
+export const enum Division {
   UNDEFINED_DIVISION = "UNDEFINED_DIVISION",
   DIVISION_I = "DIVISION_I",
   DIVISION_II = "DIVISION_II",
@@ -18,7 +18,7 @@ export enum Division {
   DIVISION_V = "DIVISION_V",
 }
 
-export enum Queue {
+export const enum Queue {
   UNDEFINED_QUEUE,
   CUSTOM,
   NORMAL_5X5_BLIND,
