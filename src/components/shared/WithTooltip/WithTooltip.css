@@ -5,7 +5,7 @@
 }
 .tooltip {
   position: fixed;
-  z-index: 9001; /*its over 9000 lul */
+  z-index: 9001; /*its over 9000 lul */ /* lul - p */
   .desc {
     color: var(--white);
   }

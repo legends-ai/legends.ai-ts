@@ -189,4 +189,4 @@ class WithTooltip extends React.PureComponent<Props, State> {
   }
 }
 
-export default withStyles(styles)(WithTooltip)
+export default withStyles<Props>(styles)(WithTooltip)
