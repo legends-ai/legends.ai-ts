@@ -6,7 +6,7 @@ import { graphql, createFragmentContainer } from 'react-relay'
 import Metadata from './Metadata'
 
 interface Props {
-  region: string
+  region: string,
   meta: any,
   overview: any
 }
