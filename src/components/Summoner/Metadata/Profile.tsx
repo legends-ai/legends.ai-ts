@@ -3,10 +3,13 @@ import * as styles from './Metadata.css'
 import withStyles from 'isomorphic-style-loader/lib/withStyles'
 import { graphql, createFragmentContainer } from 'react-relay'
 
+import { CLASS_BADGE_THRESHOLD, classMap } from '~constants'
+import { ChampionClass } from '~enums'
+import * as staticUrl from '~utils/staticUrl'
+
 import LoadingSpinner from '~components/shared/LoadingSpinner'
 import { ProfileImage } from '~components/shared/images'
 import WithTooltip from '~components/shared/WithTooltip'
-import * as staticUrl from '~utils/staticUrl'
 
 interface Props {
   meta: {
@@ -16,12 +19,16 @@ interface Props {
   overview: {
     numForSeason: number,
     numNotFetched: number,
+    class_distribution: {
+      class: ChampionClass,
+      value: number
+    }[],
   },
   version: string,
 }
 
 const Profile = ({ meta, overview, version }: Props) => {
-  const { numForSeason, numNotFetched } = overview
+  const { numForSeason, numNotFetched, class_distribution } = overview
   const { profile_icon_id, name } = meta
   return (
     <div className={styles.profile}>
@@ -43,6 +50,21 @@ const Profile = ({ meta, overview, version }: Props) => {
           :
           <h1>{name || '-'}</h1>
         }
+        <h2>
+          {class_distribution[0] &&
+          <span className={styles.badge}>
+            {classMap[class_distribution[0].class]}
+          </span>}
+          {
+            class_distribution.length > 1 &&
+            class_distribution[1].value > class_distribution.reduce(
+              (acc, { value }) => acc + value, 0
+            ) * CLASS_BADGE_THRESHOLD &&
+            <span className={styles.badge}>
+              {classMap[class_distribution[1].class]}
+            </span>
+          }
+        </h2>
       </div>
     </div>
   )
@@ -61,6 +83,10 @@ export default createFragmentContainer(
       fragment Profile_overview on SummonerOverview {
         numForSeason
         numNotFetched
+        class_distribution {
+          class
+          value
+        }
       }
     `,
   },

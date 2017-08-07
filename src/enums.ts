@@ -1,21 +1,36 @@
+export const enum Region {
+  UNDEFINED_REGION = 'UNDEFINED_REGION',
+  BR = 'BR',
+  EUNE = 'EUNE',
+  EUW = 'EUW',
+  JP = 'JP',
+  KR = 'KR',
+  LAN = 'LAN',
+  LAS = 'LAS',
+  NA = 'NA',
+  OCE = 'OCE',
+  TR = 'TR',
+  RU = 'RU',
+}
+
 export const enum Tier {
-  UNRANKED = "UNRANKED",
-  BRONZE = "BRONZE",
-  SILVER = "SILVER",
-  GOLD = "GOLD",
-  PLATINUM = "PLATINUM",
-  DIAMOND = "DIAMOND",
-  MASTER = "MASTER",
-  CHALLENGER = "CHALLENGER",
+  UNRANKED = 'UNRANKED',
+  BRONZE = 'BRONZE',
+  SILVER = 'SILVER',
+  GOLD = 'GOLD',
+  PLATINUM = 'PLATINUM',
+  DIAMOND = 'DIAMOND',
+  MASTER = 'MASTER',
+  CHALLENGER = 'CHALLENGER',
 }
 
 export const enum Division {
-  UNDEFINED_DIVISION = "UNDEFINED_DIVISION",
-  DIVISION_I = "DIVISION_I",
-  DIVISION_II = "DIVISION_II",
-  DIVISION_III = "DIVISION_II",
-  DIVISION_IV = "DIVISION_IV",
-  DIVISION_V = "DIVISION_V",
+  UNDEFINED_DIVISION = 'UNDEFINED_DIVISION',
+  DIVISION_I = 'DIVISION_I',
+  DIVISION_II = 'DIVISION_II',
+  DIVISION_III = 'DIVISION_II',
+  DIVISION_IV = 'DIVISION_IV',
+  DIVISION_V = 'DIVISION_V',
 }
 
 export const enum Queue {
@@ -66,4 +81,14 @@ export const enum Queue {
   ARSR_5X5,
   ASSASSINATE_5X5,
   DARKSTAR_3X3
+}
+
+export const enum ChampionClass {
+  NO_CLASS = 'NO_CLASS',
+  ASSASSIN = 'ASSASSIN',
+  FIGHTER = 'FIGHTER',
+  MAGE = 'MAGE',
+  MARKSMAN = 'MARKSMAN',
+  SUP = 'SUP',
+  TANK = 'TANK',
 }

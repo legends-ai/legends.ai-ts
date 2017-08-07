@@ -1,4 +1,17 @@
 import { Queue } from '~enums'
+
+export const CLASS_BADGE_THRESHOLD = 0.2
+
+export const classMap: {[key: string]: string} = {
+  NO_CLASS: 'NO_CLASS',
+  ASSASSIN: 'ASSASSIN',
+  FIGHTER: 'FIGHTER',
+  MAGE: 'MAGE',
+  MARKSMAN: 'MARKSMAN',
+  SUP: 'SUPPPORT',
+  TANK: 'TANK',
+}
+
 type QueueMeta = {
   key: string,
   name: string,
