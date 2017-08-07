@@ -4,11 +4,14 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles'
 
 import Profile from './Profile'
 
-interface Props {}
+interface Props {
+  meta: any,
+  overview: any
+}
 
-const Metadata = ({}: Props) => (
+const Metadata = ({ meta, overview }: Props) => (
   <div className={`col-12 ${styles.metadata}`}>
-    <Profile />
+    <Profile meta={meta} overview={overview} version="7.14.1"/>
   </div>
 )
 

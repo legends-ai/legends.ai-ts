@@ -7,7 +7,7 @@
     "pull-geodata": "scripts/update_geodata.sh",
     "pull-schema": "scripts/update_graphql.sh",
     "tcm": "tcm src -c -o types",
-    "relay-compiler": "relay-compiler --src ./src --schema schema.graphql --extensions ts tsx",
+    "relay": "relay-compiler --src ./src --schema schema.graphql --extensions ts tsx",
     "devbuild": "npm run clean && npm run tcm && webpack --env.DEBUG",
     "start": "npm run devbuild && node build/server.js"
   },

@@ -1,3 +1,5 @@
+@import 'components/variables.css';
+
 .metadata {
   .season-ranking {
     padding: 5px;

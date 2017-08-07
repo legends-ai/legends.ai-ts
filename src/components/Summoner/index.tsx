@@ -6,14 +6,22 @@ import environment from '~src/environment'
 import LoadingSpinner from '~components/shared/LoadingSpinner'
 import Summoner from './Summoner'
 
-export default (
+interface Props {
+  region: string
+}
+
+export default ({ region }: Props) => (
   <QueryRenderer
       environment={environment}
       query={graphql`
         query SummonerQuery {
           summoner(account_id: 202610818, region: NA) {
-            ...Profile_meta
-            ...Profile_overview
+            meta {
+              ...Profile_meta
+            }
+            overview(season: SEASON2017) {
+              ...Profile_overview
+            }
           }
         }
       `}
@@ -22,8 +30,10 @@ export default (
         if (error)
           return <div>{error.message}</div>
         
-        if (props)
-          return <Summoner />
+        if (props) {
+          console.log(props)
+          return <Summoner region={region} meta={props.meta} overview={props.overview} />
+        }
 
         return <LoadingSpinner />
       }}

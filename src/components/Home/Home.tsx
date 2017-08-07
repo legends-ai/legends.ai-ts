@@ -35,6 +35,7 @@ const Home = (props: Props) => (
         if (error) {
           return <div>{error.message}</div>;
         } else if (props) {
+          console.log(props)
           return (
             <div>
               <Rank position={props.summoner.rankings.current_league_positions[0]} />

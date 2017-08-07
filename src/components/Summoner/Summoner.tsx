@@ -5,17 +5,25 @@ import { graphql, createFragmentContainer } from 'react-relay'
 
 import Metadata from './Metadata'
 
-interface Props {}
+interface Props {
+  region: string
+  meta: any,
+  overview: any
+}
 
 interface State {}
 
 class Summoner extends React.Component<Props, State> {
 
+  constructor(props: Props) {
+    super(props)
+  }
+
   render() {
     return (
       <div className={styles.summoner}>
         <div className="row">
-          <Metadata />
+          <Metadata meta={this.props.meta} overview={this.props.overview}/>
         </div>
       </div>
     )
