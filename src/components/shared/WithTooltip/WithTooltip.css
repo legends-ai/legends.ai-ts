@@ -1,6 +1,6 @@
 @import 'components/variables.css';
 
-withTooltip {
+.withTooltip {
   display: inherit;
 }
 .tooltip {

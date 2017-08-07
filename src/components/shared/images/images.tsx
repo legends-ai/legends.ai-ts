@@ -13,12 +13,12 @@ interface ProfileImageProps {
 export const ProfileImage = withStyles<ProfileImageProps>(styles)(
   ({ url, children, isZoomed = false, alignRight = false, isSquare = false }: ProfileImageProps) => (
     <div
-      className={
-        `${styles.profileImage}
+      className={`
+        ${styles.profileImage}
         ${isSquare ? styles.square : ''}
         ${alignRight ? styles.right : ''}
-        ${isZoomed ? styles.zoomed: ''}`
-      }
+        ${isZoomed ? styles.zoomed: ''}
+      `}
       style={{ backgroundImage: `url(${url})` }}
     >
       {children}

@@ -17,7 +17,7 @@ const Rune = ({ id, version, count, name, description }: Props) => (
     <b>{count}x</b>
     <div className={styles.content}>
       <span>{name}</span>
-      <span className={styles.description}>{description}</span>
+      <span className={styles.desc}>{description}</span>
     </div>
   </div>
 )
