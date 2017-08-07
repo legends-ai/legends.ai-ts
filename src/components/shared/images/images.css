@@ -1,0 +1,18 @@
+.profileImage {
+  background-position: center;
+  background-size: cover;
+  width: 85px;
+  height: 65px;
+  border-radius: 3px;
+  position: relative;
+  float: left;
+  &.right {
+    float: right;
+  }
+  &.square {
+    height: 85px;
+  }
+  &.zoomed {
+    background-size: 110%;
+  }
+}

@@ -3,6 +3,9 @@ import { Tier, Division } from '~src/enums'
 import { Rank } from '~types'
 import * as format from '~utils/format'
 
+export const profile = (id: number, version: string) =>
+  `https://ddragon.leagueoflegends.com/cdn/${version}/img/profileicon/${id}.png`
+
 export const rank = ({ tier = Tier.UNRANKED, division = Division.UNDEFINED_DIVISION }: Rank) => {
   if (tier !== Tier.UNRANKED) {
     const fTier = format.tier(tier)
