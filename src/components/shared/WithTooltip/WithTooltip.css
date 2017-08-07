@@ -1,0 +1,71 @@
+@import 'components/variables.css';
+
+.withTooltip {
+  display: inherit;
+}
+.tooltip {
+  position: fixed;
+  z-index: 9001; /*its over 9000 lul */
+  .desc {
+    color: var(--white);
+  }
+  .item {
+    width: 300px;
+    padding: 0 10px;
+    padding-bottom: 10px;
+    color: var(--text-purple);
+    h1 {
+      font-size: 12px;
+      color: var(--white);
+      display: inline-block;
+      padding: 0 10px;
+      line-height: 40px;
+    }
+    img {
+      width: 35px;
+      height: 35px;
+      margin: 0;
+      padding: 0;
+      display: inline-block;
+      border-radius: 3px;
+    }
+    .head {
+      margin-top: 5px;
+    }
+    p, unique, .head {
+      margin-bottom: 5px;
+    }
+    p {
+      display: block;
+    }
+    stats {
+      color: var(--orange);
+    }
+    .cost {
+      color: var(--white);
+      margin-top: 15px;
+      display: block;
+    }
+  }
+  .box {
+    padding: 10px;
+    color: var(--white);
+    font-size: 12px;
+    white-space: nowrap;
+  }
+}
+.flipper {
+  position: absolute;
+  background: var(--darker-purple);
+  pointer-events: none;
+  border-radius: 3px;
+  text-align: left;
+  top: 20px;
+  &.x {
+    right: 0;
+  }
+  &.y {
+    bottom: 20px;
+    top: auto;
+  }
+}

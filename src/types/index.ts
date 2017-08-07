@@ -1,4 +1,5 @@
 export * from './riot'
+export * from './static'
 
 import { Tier, Division } from '~enums'
 

@@ -17,8 +17,17 @@ export const rank = ({ tier = Tier.UNRANKED, division = Division.UNDEFINED_DIVIS
   return `${STATIC_HOST}/league/icons/ranked/base/provisional.png`
 }
 
+export const item = (id: number, version: string) =>
+  `https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${id}.png`
+
+export const spell = (id: number, version: string) =>
+  `https://ddragon.leagueoflegends.com/cdn/${version}/img/spell/${id}.png`
+
+export const skill = (id: number, version: string) =>
+  `https://ddragon.leagueoflegends.com/cdn/${version}/img/skill/${id}.png`
+
 export const rune = (id: string, version: string) =>
   `https://ddragon.leagueoflegends.com/cdn/${version}/img/rune/${id}.png`
 
-export const mastery = (id: string, version: string) =>
+export const mastery = (id: number | string, version: string) =>
   `https://ddragon.leagueoflegends.com/cdn/${version}/img/mastery/${id}.png`
