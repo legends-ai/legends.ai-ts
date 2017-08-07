@@ -4,16 +4,24 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles'
 
 interface ProfileImageProps {
   url: string,
+  children?: React.ReactNode,
   isSquare?: boolean,
   isZoomed?: boolean,
   alignRight?: boolean,
 }
 
 export const ProfileImage = withStyles<ProfileImageProps>(styles)(
-  ({ url, isZoomed = false, alignRight = false, isSquare = false }: ProfileImageProps) => (
+  ({ url, children, isZoomed = false, alignRight = false, isSquare = false }: ProfileImageProps) => (
     <div
-      className={`profileImage ${isSquare ? styles.square : ''} ${alignRight ? styles.right : ''} ${isZoomed ? styles.zoomed: ''}`}
+      className={
+        `${styles.profileImage}
+        ${isSquare ? styles.square : ''}
+        ${alignRight ? styles.right : ''}
+        ${isZoomed ? styles.zoomed: ''}`
+      }
       style={{ backgroundImage: `url(${url})` }}
-    />
+    >
+      {children}
+    </div>
   )
 )

@@ -21,7 +21,7 @@ class Summoner extends React.Component<Props, State> {
 
   render() {
     return (
-      <div className={styles.summoner}>
+      <div className={`page-wrapper ${styles.summoner}`}>
         <div className="row">
           <Metadata meta={this.props.meta} overview={this.props.overview}/>
         </div>

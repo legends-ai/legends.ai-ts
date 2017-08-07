@@ -3,32 +3,32 @@
 .runes {
   min-height: 284px;
   color: var(--white);
-  .rune:nth-child(even) {
+  & .rune:nth-child(even) {
     background: var(--dark-purple);
   }
-  .rune:last-child {
+  & .rune:last-child {
     border-radius: 3px;
   }
 }
 .rune {
   padding: 5px 10px;
-  img {
+  & img {
     width: 30px;
   }
-  b {
+  & b {
     font-size: 16px;
     font-weight: normal;
   }
-  > * {
+  & > * {
     margin-right: 10px;
   }
+}
+.desc {
+  display: block;
+  font-size: 10px;
+  color: var(--text-purple);
 }
 .content {
   display: inline-block;
   vertical-align: bottom;
-}
-.description {
-  display: block;
-  font-size: 10px;
-  color: var(--text-purple);
 }

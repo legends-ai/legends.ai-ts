@@ -31,8 +31,9 @@ export default ({ region }: Props) => (
           return <div>{error.message}</div>
         
         if (props) {
+          const { meta, overview } = props.summoner
           console.log(props)
-          return <Summoner region={region} meta={props.meta} overview={props.overview} />
+          return <Summoner region={region} meta={meta} overview={overview} />
         }
 
         return <LoadingSpinner />

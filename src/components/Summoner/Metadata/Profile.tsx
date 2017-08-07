@@ -10,7 +10,7 @@ import * as staticUrl from '~utils/staticUrl'
 
 interface Props {
   meta: {
-    profileIconId: number,
+    profile_icon_id: number,
     name: string,
   },
   overview: {
@@ -22,12 +22,12 @@ interface Props {
 
 const Profile = ({ meta, overview, version }: Props) => {
   const { numForSeason, numNotFetched } = overview
-  const { profileIconId, name } = meta
+  const { profile_icon_id, name } = meta
   return (
     <div className={styles.profile}>
       <div className={styles.image}>
         <ProfileImage
-          url={staticUrl.profile(profileIconId || 1400, version)}
+          url={staticUrl.profile(profile_icon_id || 1400, version)}
           isSquare
         />
         {numNotFetched > 0 && <div className={styles.loader}>

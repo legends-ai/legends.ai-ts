@@ -6,32 +6,38 @@
   border-radius: 3px;
   background: var(--deep-purple);
   position: relative;
-
-  :global(.table-row) {
+  &.dark {
+    background: var(--darker-purple);
+    & :global(.table-row) {
+      &:nth-child(even) {
+        background: var(--darker-deep-purple);
+      }
+    }
+  }
+  & :global(.table-row) {
     &:nth-child(even) {
       background: var(--dark-purple);
     }
   }
 }
-
 .title {
   color: var(--white);
   clear: both;
-  h1 {
+  & h1 {
     padding: 8px;
     padding-right: 0;
     font-size: 14px;
     display: inline-block;
     text-transform: capitalize;
   }
-  h2 {
+  & h2 {
     padding-left: 8px;
     font-size: 12px;
     min-width: 200px;
     color: var(--text-purple);
     display: inline-block;
   }
-  .expand {
+  & .expand {
     float: right;
     font-size: 10px;
     background: none;
@@ -45,12 +51,12 @@
     z-index: 200;
     &.disabled {
       pointer-events: none;
-      .icon {
+      & .icon {
         background: var(--dark-purple);
         color: var(--deep-purple);
       }
     }
-    .icon {
+    & .icon {
       font-size: 13px;
       background: var(--darker-purple);
       color: var(--white);
@@ -67,7 +73,7 @@
     }
     &:hover {
       color: var(--faded-dark-purple);
-      .icon {
+      & .icon {
         color: var(--darker-purple);
         background: var(--yellow);
         box-shadow: 0 0 0 6px var(--yellow), 0 3px 3px 6px color(var(--yellow) alpha(-50%));
@@ -75,4 +81,3 @@
     }
   }
 }
-
