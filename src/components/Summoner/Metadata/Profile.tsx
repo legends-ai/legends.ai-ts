@@ -20,21 +20,6 @@ interface Props {
   version: string,
 }
 
-const fragments = {
-  meta: graphql`
-    fragment Profile_meta on SummonerMeta {
-      profile_icon_id
-      name
-    }
-  `,
-  overview: graphql`
-    fragment Profile_overview on SummonerOverview {
-      numForSeason
-      numNotFetched
-    }
-  `,
-}
-
 const Profile = ({ meta, overview, version }: Props) => {
   const { numForSeason, numNotFetched } = overview
   const { profileIconId, name } = meta
@@ -63,4 +48,20 @@ const Profile = ({ meta, overview, version }: Props) => {
   )
 }
 
-export default createFragmentContainer(withStyles<Props>(styles)(Profile), fragments)
+export default createFragmentContainer(
+  withStyles<Props>(styles)(Profile),
+  {
+    meta: graphql`
+      fragment Profile_meta on SummonerMeta {
+        profile_icon_id
+        name
+      }
+    `,
+    overview: graphql`
+      fragment Profile_overview on SummonerOverview {
+        numForSeason
+        numNotFetched
+      }
+    `,
+  },
+)
