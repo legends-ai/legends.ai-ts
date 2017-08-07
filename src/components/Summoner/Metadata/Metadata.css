@@ -1,0 +1,97 @@
+.metadata {
+  .season-ranking {
+    padding: 5px;
+    margin: 3px 10px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 4px;
+    text-align: center;
+    float: left;
+    img {
+      height: 40px;
+      margin-right: 10px;
+      margin: auto;
+    }
+    h2 {
+      font-size: 8px;
+    }
+    h1 {
+      font-size: 14px;
+      color: var(--white);
+    }
+  }
+  .ranking {
+    margin-right: 10px;
+    position: relative;
+    &:after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      border-right: 2px solid rgba(255,255,255,0.1);
+      transform: skewX(-10deg);
+    }
+    &:nth-last-child(1):after {
+      display: none;
+    }
+  }
+  .ticker {
+    margin: 0 10px;
+    float: right;
+    text-align: center;
+    .title {
+      height: 50px;
+    }
+    h1 {
+      color: var(--white);
+      line-height: 32px;
+    }
+  }
+  .right {
+    float: right;
+  }
+}
+.profile {
+  .image {
+    position: relative;
+    width: 85px;
+    height: 85px;
+    float: left;
+    .loader {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      display: flex;
+      align-items: center;
+      background: color(var(--deeper-purple) alpha(-80%));
+      .progress {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        bottom: 0;
+        background: color(var(--darker-purple) alpha(-20%));
+        transition: all 200ms ease-in-out;
+      }
+    }
+  }
+  .content {
+    padding-left: 10px;
+    margin-right: 20px;
+    float: left;
+  }
+  h1 {
+    color: var(--white);
+    & span {
+      color: var(--text-purple);
+    }
+  }
+  .badge {
+    padding: 3px;
+    background: var(--dark-purple);
+    border-radius: 3px;
+    display: inline-block;
+    margin: 3px 0;
+    margin-right: 5px;
+  }
+}
