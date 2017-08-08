@@ -1,0 +1,23 @@
+.sprite {
+  width: 48px;
+  height: 48px;
+  margin: -11px;
+  vertical-align: middle;
+  display: inline-block;
+  background: var(--darker-purple);
+  transform: scale(0.60);
+  line-height: 48px;
+  font-size: 30px;
+  text-align: center;
+  &.small {
+    margin: -13px;
+    transform: scale(0.45);
+  }
+  &.large {
+    margin: 0;
+    transform: scale(1);
+  }
+  &.unknown {
+
+  }
+}

@@ -1,0 +1,35 @@
+.participants {
+  display: flex;
+  width: 180px;
+  margin-left: 5px;
+  & .participant {
+    height: 16px;
+    line-height: 16px;
+    & .img {
+      width: 19px;
+      height: 19px;
+      border-radius: 100%;
+      margin-top: -8px;
+      overflow: hidden;
+      display: inline-block;
+    }
+  }
+  & .team {
+    width: 50%;
+    & h1 {
+      width: 65px;
+      padding-left: 5px;
+      font-size: 10px;
+      display: inline-block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: var(--text-purple);
+    }
+    & .selected {
+      & h1 {
+        color: var(--white);
+      }
+    }
+  }
+}
